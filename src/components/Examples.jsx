@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { EXAMPLES } from '../data.js';
 import TabButton from './TabButton.jsx';
+import Section from "./Section.jsx";
+import Tabs from "./Tabs.jsx";
+
 export default function Examples() {
 
   const [selectedTopic, setSelectedTopic] = useState();
@@ -25,15 +28,16 @@ export default function Examples() {
   }
 
   return (
-    <section id="examples">
-      <h2>Examples</h2>
+    <Section title="Examples" id="examples">
+      <Tabs buttons={<><TabButton isSelected={selectedTopic === 'components'} onClick={() => hanleSelect('components')}>Components</TabButton>
+        <TabButton isSelected={selectedTopic === 'jsx'} onClick={() => hanleSelect('jsx')}>JSX</TabButton>
+        <TabButton isSelected={selectedTopic === 'props'} onClick={() => hanleSelect('props')}>Props</TabButton>
+        <TabButton isSelected={selectedTopic === 'state'} onClick={() => hanleSelect('state')}>State</TabButton></>}>
+        {tabContent}
+      </Tabs>
       <menu>
-        <TabButton isSelected={selectedTopic === 'components'} onSelect={() => hanleSelect('components')}>Components</TabButton>
-        <TabButton isSelected={selectedTopic === 'jsx'} onSelect={() => hanleSelect('jsx')}>JSX</TabButton>
-        <TabButton isSelected={selectedTopic === 'props'} onSelect={() => hanleSelect('props')}>Props</TabButton>
-        <TabButton isSelected={selectedTopic === 'state'} onSelect={() => hanleSelect('state')}>State</TabButton>
+
       </menu>
-      {tabContent}
-    </section>
+    </Section>
   );
 }
