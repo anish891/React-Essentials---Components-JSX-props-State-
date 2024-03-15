@@ -14,7 +14,6 @@ function App() {
       <main>
         <CoreConcepts />
         <Examples />
-
       </main>
     </>
     // </Fragment>
